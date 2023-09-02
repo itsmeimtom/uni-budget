@@ -49,8 +49,34 @@ function calculateEverything() {
     // show outcomes
     document.getElementById("total").innerText = `£${totalLeft}`;
     document.getElementById("weekly").innerText = `£${Math.floor(perWeek)}`;
+}
+
+function datesWinter() {
+    return setDates(
+        new Date("2023-09-16"),
+        new Date("2023-12-16")
+    );
+}
+
+function datesSpring() {
+    return setDates(
+        new Date("2024-01-08"),
+        new Date("2024-04-12")
+    );
+}
+
+function datesSummer() {
+    return setDates(
+        new Date("2024-04-13"),
+        new Date("2024-07-20")
+    );
+}
 
 
+function setDates(from, to) {
+    document.getElementById("date-from").value = from.toISOString().substr(0, 10);
+    document.getElementById("date-to").value = to.toISOString().substr(0, 10);
+    calculateEverything();
 }
 
 // https://stackoverflow.com/a/2627482
