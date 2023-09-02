@@ -27,7 +27,7 @@
 			font-weight: bold;
 		}
 
-		div, header, footer {
+		section, header, footer {
 			padding: 1em;
 			border: 1px solid #000;
 		}
@@ -37,14 +37,20 @@
 			border: none;
 		}
 
-		div > div {
-			border: none;
+		@media screen and (min-width: 30em) {
+			section#money-flex {
+				display: flex;
+				justify-content: space-around;
+				padding: 0 !important;
+			}
+
+			div.money.green {
+				border-right: 1px solid #000 !important;
+			}
 		}
 
-		div#money-flex {
-			display: flex;
-			justify-content: space-around;
-			padding: 0 !important;
+		div.money {
+			padding: 1.5em;
 		}
 
 		div.money h2 span {
@@ -61,7 +67,6 @@
 
 		div.money.green {
 			background-color: #cfc;
-			border-right: 1px solid #000 !important;
 		}
 
 		div.money.green textarea {
@@ -79,6 +84,17 @@
 		p#incomes-output, p#outgoings-output {
 			text-align: right;
 		}
+
+		div#cover.shown * {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+
+		p#date-warning {
+			font-size: 2em;
+			color: darkred;
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
@@ -88,7 +104,7 @@
 		<p>based on my amazing <a href="https://drive.google.com/file/d/1UZD3AhixNg96EblL8QNhwqHWrhVlDX6x/view">piece of paper</a></p>
 	</header>
 
-	<div>
+	<section>
 		<h2>dates</h2>
 		<p>
 			from
@@ -101,7 +117,7 @@
 		</p>
 
 		<p>
-			prefill dates:
+			or pick:
 			<a href="javascript:datesWinter();">winter '23</a>,
 			<a href="javascript:datesSpring();">spring '24</a>,
 			<a href="javascript:datesSummer();">summer '24</a>
@@ -110,10 +126,14 @@
 		<p id="date-output">
 			
 		</p>
-	</div>
+
+		<p id="date-warning">&UpArrow; check your dates!</p>
+	</section>
+
+	<div id="cover" class="shown">
 
 	<!-- income and outgoings sections -->
-	<div id="money-flex">
+	<section id="money-flex">
 
 		<div class="money green">
 			<h2>income <span>during this period</span></h2>
@@ -129,9 +149,9 @@
 			<p id="outgoings-output">£0</p>
 		</div>
 
-	</div>
+	</section>
 
-	<div>
+	<section>
 		<h2>outcomes</h2>
 
 		<p>
@@ -143,6 +163,13 @@
 			Available per week:<br>
 			<b id="weekly" style="font-size: 2em;">£0</b>
 		</p>
+
+		<p style="background-color: #eef; padding: 1em;">
+			Available per week, less £30 for food:<br>
+			<b id="weekly-after-scran" style="font-size: 2.5em;">£0</b>
+		</p>
+	</section>
+
 	</div>
 
 	<footer>

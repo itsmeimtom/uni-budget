@@ -8,7 +8,16 @@ function calculateEverything() {
     const days = daysBetween(fromDate, toDate);
     const weeks = Math.ceil(days / 7);
 
-    document.getElementById("date-output").innerHTML = `<span style="font-size: 2em;"><b>${weeks}</b> weeks</span> (<b>${days}</b> days)`;
+    document.getElementById("date-output").innerHTML = `<span style="font-size: 2em;">= <b>${weeks}</b> weeks</span> (<b>${days}</b> days)`;
+
+    // if weeks is a number (we probably have valid dates!), unhide everything else and remove the warning
+    if(!isNaN(weeks)) {
+        document.getElementById("cover").classList.remove("shown");
+        document.getElementById("date-warning").style.display = "none";
+    } else {
+        document.getElementById("cover").classList.add("shown");
+        document.getElementById("date-warning").style.display = "block";
+    }
 
 
     // sum income
@@ -44,11 +53,14 @@ function calculateEverything() {
     // calculate outcomes
     let totalLeft = incomeTotal - outgoingTotal;
     let perWeek = totalLeft / weeks;
+    let perWeekAfterFood = perWeek - 30;
     let perDay = totalLeft / days;
 
     // show outcomes
     document.getElementById("total").innerText = `£${totalLeft}`;
     document.getElementById("weekly").innerText = `£${Math.floor(perWeek)}`;
+    document.getElementById("weekly-after-scran").innerText = `£${Math.floor(perWeekAfterFood)}`;
+
 }
 
 function datesWinter() {
