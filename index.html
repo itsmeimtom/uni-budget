@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>uni budget</title>
+
+	<style>
+		* {
+			text-transform: lowercase;
+		}
+
+		body {
+			max-width: 30em;
+			margin: 0 auto;
+			font-family: monospace;
+			font-size: 1.2em;
+		}
+
+		a {
+			color: darblue;
+			text-decoration: underline;
+		}
+
+		a:hover {
+			text-decoration: none;
+			font-weight: bold;
+		}
+
+		div, header, footer {
+			padding: 1em;
+			border: 1px solid #000;
+		}
+
+		header, footer {
+			text-align: center;
+			border: none;
+		}
+
+		div > div {
+			border: none;
+		}
+
+		div#money-flex {
+			display: flex;
+			justify-content: space-around;
+			padding: 0 !important;
+		}
+
+		div.money textarea {
+			resize: none;
+			text-align: right;
+			width: calc(100% - 1em);
+			font-size: 1.2em;
+		}
+
+		div.money.green {
+			background-color: #cfc;
+			border-right: 1px solid #000 !important;
+		}
+
+		div.money.green textarea {
+			background-color: #efe;
+		}
+
+		div.money.red {
+			background-color: #fcc;
+		}
+
+		div.money.red textarea {
+			background-color: #fee;
+		}
+
+		p#incomes-output, p#outgoings-output {
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+
+	<header>
+		<h1>uni budgeter thing</h1>
+		<p>based on my amazing piece of paper</p>
+	</header>
+
+	<div>
+		<h2>dates</h2>
+		<p>
+			from
+			<input type="date" id="date-from">
+			
+			<br>
+
+			to&nbsp;&nbsp; 
+			<input type="date" id="date-to">
+		</p>
+
+		<p id="date-output">
+			
+		</p>
+	</div>
+
+	<!-- income and outgoings sections -->
+	<div id="money-flex">
+
+		<div class="money green">
+			<h2>income</h2>
+			<p>type a list of integer amounts, separated by new lines</p>
+			<textarea cols="6" rows="10" id="incomes"></textarea>
+			<p id="incomes-output">£0</p>
+		</div>
+
+		<div class="money red">
+			<h2>outgoings</h2>
+			<p>type a list of integer amounts, separated by new lines</p>
+			<textarea cols="6" rows="10" id="outgoings"></textarea>
+			<p id="outgoings-output">£0</p>
+		</div>
+
+	</div>
+
+	<div>
+		<h2>outcomes</h2>
+
+		<p>
+			Total after outgoings:<br>
+			<b id="total" style="font-size: 2em;">£0</b>
+		</p>
+
+		<p>
+			Available per week:<br>
+			<b id="weekly" style="font-size: 2em;">£0</b>
+		</p>
+	</div>
+
+	<footer>
+		<p><span style="font-family:serif;">MMXXIII</span><br>by <a href="https://tomr.me">tom</a></p>
+	</footer>
+
+	
+	<script src="maffs.js"></script>
+</body>
+</html>
