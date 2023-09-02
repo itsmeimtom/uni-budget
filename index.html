@@ -47,6 +47,11 @@
 			padding: 0 !important;
 		}
 
+		div.money h2 span {
+			font-size: 0.8em;
+			display: block;
+		}
+
 		div.money textarea {
 			resize: none;
 			text-align: right;
@@ -111,14 +116,14 @@
 	<div id="money-flex">
 
 		<div class="money green">
-			<h2>income</h2>
+			<h2>income <span>during this period</span></h2>
 			<p>type a list of integer amounts, separated by new lines</p>
 			<textarea cols="6" rows="10" id="incomes"></textarea>
 			<p id="incomes-output">£0</p>
 		</div>
 
 		<div class="money red">
-			<h2>outgoings</h2>
+			<h2>outgoings <span>during this period</span></h2>
 			<p>type a list of integer amounts, separated by new lines</p>
 			<textarea cols="6" rows="10" id="outgoings"></textarea>
 			<p id="outgoings-output">£0</p>
