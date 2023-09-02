@@ -8,7 +8,7 @@ function calculateEverything() {
     const days = daysBetween(fromDate, toDate);
     const weeks = Math.ceil(days / 7);
 
-    document.getElementById("date-output").innerHTML = `<b>${days}</b> days (<b>${weeks}</b> weeks)`
+    document.getElementById("date-output").innerHTML = `<span style="font-size: 2em;"><b>${weeks}</b> weeks</span> (<b>${days}</b> days)`;
 
 
     // sum income
