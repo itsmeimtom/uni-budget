@@ -26,10 +26,12 @@ function calculateEverything() {
     
     let incomeTotal = 0;
     for (const inEntry of incomes) {
-        if (isNaN(parseInt(inEntry))) continue;
+        evalled = eval(inEntry);
+        asInt = parseInt(evalled);
+        
+        if(isNaN(asInt) || !asInt) continue;
 
-
-        incomeTotal += parseInt(inEntry);
+        incomeTotal += parseInt(asInt);
     }
 
     document.getElementById("incomes-output").innerHTML = `<b>£${incomeTotal}</b>`;
@@ -41,14 +43,15 @@ function calculateEverything() {
 
     let outgoingTotal = 0;
     for (const outEntry of outgoings) {
-        if (isNaN(parseInt(outEntry))) continue;
+        evalled = eval(outEntry);
+        asInt = parseInt(evalled);
+        
+        if(isNaN(asInt) || !asInt) continue;
 
-
-        outgoingTotal += parseInt(outEntry);
+        outgoingTotal += parseInt(asInt);
     }
 
     document.getElementById("outgoings-output").innerHTML = `<b>£${outgoingTotal}</b>`;
-
 
     // calculate outcomes
     let totalLeft = incomeTotal - outgoingTotal;
